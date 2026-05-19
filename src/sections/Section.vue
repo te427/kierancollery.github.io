@@ -7,6 +7,6 @@
 
 <style scoped>
 .section {
-    height: 300px;
+    min-height: 300px;
 }
 </style>

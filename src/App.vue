@@ -2,10 +2,20 @@
 <script setup lang="ts">
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'
+import AboutSection from './sections/AboutSection.vue'
+import MapSection from './sections/MapSection.vue'
+import ResearchSection from './sections/ResearchSection.vue'
+import ContactSection from './sections/ContactSection.vue'
 
 let createSections = (components) => components.map((component, id) => ({id, component}))
 
-const components = createSections([LogoSection])
+const components = createSections([
+  LogoSection,
+  AboutSection,
+  MapSection,
+  ResearchSection,
+  ContactSection
+])
 </script>
 
 <template>
