@@ -1,3 +1,4 @@
+<!-- This section should provide a "Return to top" button and disclaimers -->
 <script setup lang="ts">
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'

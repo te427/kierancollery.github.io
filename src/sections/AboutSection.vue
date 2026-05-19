@@ -1,3 +1,4 @@
+<!-- This section should contain a self-portrait (style?) and writeup about myself -->
 <script>
 </script>
 
