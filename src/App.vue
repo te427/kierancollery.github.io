@@ -1,11 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Section from './sections/Section.vue'
+import LogoSection from './sections/LogoSection.vue'
+
+let createSections = (components) => components.map((component, id) => ({id, component}))
+
+const components = createSections([LogoSection])
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div v-for="({component, id}, _) in components" :key="id">
+    <Section>
+      <component :is="component"/>
+    </Section>
+  </div>
 </template>
 
 <style scoped></style>
