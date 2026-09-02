@@ -10,17 +10,17 @@ defineProps<{
   ]
 }>()
 
-defineEmits<{ (e: 'select', value: string): void }>()
+const emit = defineEmits<{ (e: 'select', value: string): void }>()
 
 const itemRefs = useTemplateRef('items')
 
 function selectItem(event) {
-  const clickContent = event.target.textContent
+  const value = event.target.textContent
 
-  emit(clickContent)
+  emit('select', value)
 
   for (const el of itemRefs.value.values()) {
-    if (el.textContent === clickContent) {
+    if (el.textContent === value) {
       el.classList.add('selected')
     } else {
       el.classList.remove('selected')
