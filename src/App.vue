@@ -1,6 +1,8 @@
 <!-- This section should provide a "Return to top" button and disclaimers -->
 <script setup lang="ts">
-import { useTemplateRef, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useTemplateRef } from 'vue'
+
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'
 import AboutSection from './sections/AboutSection.vue'
@@ -19,8 +21,6 @@ const components = createSections([
   ResearchSection,
   ContactSection,
 ])
-
-onMounted(() => {})
 
 const showingClass = 'return-showing'
 const hidingClass = 'return-hiding'

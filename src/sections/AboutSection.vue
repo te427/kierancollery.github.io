@@ -2,7 +2,7 @@
 <script></script>
 
 <template>
-  <div class="about-container">
+  <div class="about-container" id="about">
     <div class="img-container">
       <div class="img-frame">
         <img class="img-content" src="/website_self_cropped.jpg" />
@@ -12,13 +12,14 @@
       <p class="text-title">Hey there!</p>
       <p class="text-content">
         My name is Kieran Collery, and I am a University of Oxford DPhil candidate in Theology and
-        Religion, currently studying the philosophical works of Lev Shestov and his assessment and
+        Religion currently studying the philosophical works of Lev Shestov and his assessment and
         critiques of modern Lutheran thought.
       </p>
       <p class="text-content">
-        My current topics of interest include the relationship between faith and reason, the
-        phenomenon of play, the encounter with otherness, and the irruption of incongruous laughter,
-        all with a view to their application to Christian theology.
+        My topics of interest include the relationship between faith and reason, play, incongruous
+        laughter, revelation, and otherness, all with a view to their application to Christian
+        theology. My academic work has generally focused on existentialism and hermeneutics, and
+        Kierkegaard and Gadamer in particular.
       </p>
       <p class="text-content">
         Previously, I studied theology at Durham and St. Andrews. Prior to my academic life, I
