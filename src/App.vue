@@ -1,6 +1,6 @@
 <!-- This section should provide a "Return to top" button and disclaimers -->
 <script setup lang="ts">
-import {useTemplateRef, onMounted} from 'vue'
+import { useTemplateRef, onMounted } from 'vue'
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'
 import AboutSection from './sections/AboutSection.vue'
@@ -8,16 +8,16 @@ import MapSection from './sections/MapSection.vue'
 import ResearchSection from './sections/ResearchSection.vue'
 import ContactSection from './sections/ContactSection.vue'
 
-const createSections = (components) => components.map((component, id) => ({id, component}))
-let returnHidden = true;
-let returnButton = useTemplateRef('return-button')
+const createSections = (components) => components.map((component, id) => ({ id, component }))
+let returnHidden = true
+const returnButton = useTemplateRef('return-button')
 
 const components = createSections([
   LogoSection,
   AboutSection,
   MapSection,
   ResearchSection,
-  ContactSection
+  ContactSection,
 ])
 
 onMounted(() => {})
@@ -28,7 +28,7 @@ const hidingClass = 'return-hiding'
 document.body.onscroll = (e) => {
   if (!window.scrollY) {
     // hide return button
-    returnHidden = true 
+    returnHidden = true
     returnButton.value.classList.remove(showingClass)
     returnButton.value.classList.add(hidingClass)
   }
@@ -38,20 +38,17 @@ document.body.onscroll = (e) => {
     returnButton.value.classList.remove(hidingClass)
     returnButton.value.classList.add(showingClass)
   }
-
 }
 </script>
 
 <template>
   <div class="scroll-container">
-    <Section v-for="({component, id}, _) in components" :key="id">
-      <component :is="component"/>
+    <Section v-for="({ component, id }, _) in components" :key="id">
+      <component :is="component" />
     </Section>
   </div>
 
-  <div ref="return-button" class="return-to-top">
-    Return to top
-  </div>
+  <div ref="return-button" class="return-to-top">Return to top</div>
 </template>
 
 <style>
