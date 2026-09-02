@@ -51,13 +51,11 @@ const router = createRouter({
 
 router.afterEach((to, _) => {
   const s = to.hash || to.path.split('/')[1]
-  console.log(to)
 
   if (s) {
     // Wait for DOM update before scrolling
     nextTick(() => {
-      const el = document.querySelector(`#${s}`)
-      console.log(el)
+      const el = document.querySelector(s.includes('#') ? s : `#${s}`)
 
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' })
