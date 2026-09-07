@@ -35,7 +35,7 @@ const router = createRouter({
       component: ContactSection,
     },
   ],
-  scrollBehavior(to, _, savedPosition) {
+  scrollBehavior(to, _, __) {
     let obj
     if (to.path) {
       const s = to.path.split('/')[1]
