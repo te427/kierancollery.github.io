@@ -1,6 +1,6 @@
 <!-- This section should contain a self-portrait (style?) and writeup about myself -->
 <template>
-  <div class="about-container" id="about">
+  <div class="about-container">
     <div class="about-img-container">
       <div class="about-img-frame">
         <img class="about-img-content" src="/website_self_cropped.jpg" />
@@ -35,7 +35,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #fdfdfd;
 }
 
 .about-img-container {

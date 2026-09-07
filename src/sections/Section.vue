@@ -1,17 +1,27 @@
 <!-- This section should govern min-width, fade-in, focus/blur with scroll, and any other effects, as well as handle mobile view -->
 <script setup lang="ts">
-// TODO: fix background color not showing up on padding
+const props = defineProps<{
+  anchor: string
+  color?: string
+}>()
+
+const style = {
+  backgroundColor: props.color ?? 'white',
+}
 </script>
 
 <template>
-  <div class="section">
+  <div class="section" :style="style" :id="anchor">
     <slot />
   </div>
 </template>
 
 <style scoped>
 .section {
-  min-height: 300px;
-  padding: 2vh 0;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -32,7 +32,6 @@ function toggleSection(v) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
 }
 
 .info-container {

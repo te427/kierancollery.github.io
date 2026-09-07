@@ -32,11 +32,8 @@ function selectItem(event) {
 <template>
   <div class="select-menu-container" :class="{ vertical }">
     <div class="item-container" v-for="item in items" :key="item.text" ref="items">
-      <!--
-          <router-link v-if="item.path" class="item">{{ item.text }}</router-link>
-          <a v-else >{{ item.text }} </a>
-      -->
-      <a class="item" @click="selectItem">{{ item.text }}</a>
+      <router-link v-if="item.path" :to="item.path" class="item">{{ item.text }}</router-link>
+      <a v-else @click="selectItem">{{ item.text }} </a>
     </div>
   </div>
 </template>
@@ -68,6 +65,7 @@ function selectItem(event) {
   text-decoration: none;
   transition: background-size 0.5s;
   cursor: pointer;
+  color: black;
 }
 
 .selected {

@@ -1,6 +1,5 @@
 <!-- This section should provide a "Return to top" button and disclaimers -->
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import { useTemplateRef } from 'vue'
 
 import Section from './sections/Section.vue'
@@ -10,22 +9,47 @@ import ExperienceSection from './sections/ExperienceSection.vue'
 import ResearchSection from './sections/ResearchSection.vue'
 import ContactSection from './sections/ContactSection.vue'
 
-const createSections = (components) => components.map((component, id) => ({ id, component }))
+// Keep in same order as
+const sectionAnchors = [
+  {
+    anchor: 'home',
+    component: LogoSection,
+  },
+  {
+    anchor: 'about',
+    component: AboutSection,
+  },
+  {
+    anchor: 'experience',
+    component: ExperienceSection,
+  },
+  {
+    anchor: 'research',
+    component: ResearchSection,
+  },
+  {
+    anchor: 'contact',
+    component: ContactSection,
+  },
+]
+
+const createSections = (components) =>
+  components.map(({ anchor, component }, id) => {
+    const v = (0xff - 0x04 * id).toString(16)
+    const color = `${v}${v}${v}`
+
+    return { id, component, color, anchor }
+  })
+
 let returnHidden = true
 const returnButton = useTemplateRef('return-button')
 
-const components = createSections([
-  LogoSection,
-  AboutSection,
-  MapSection,
-  ResearchSection,
-  ContactSection,
-])
+const components = createSections(sectionAnchors)
 
 const showingClass = 'return-showing'
 const hidingClass = 'return-hiding'
 
-document.body.onscroll = (e) => {
+document.body.onscroll = (_) => {
   if (!window.scrollY) {
     // hide return button
     returnHidden = true
@@ -43,12 +67,19 @@ document.body.onscroll = (e) => {
 
 <template>
   <div class="scroll-container">
-    <Section v-for="({ component, id }, _) in components" :key="id">
+    <Section
+      v-for="({ component, id, color, anchor }, _) in components"
+      :key="id"
+      :color="color"
+      :anchor="anchor"
+    >
       <component :is="component" />
     </Section>
   </div>
 
-  <div ref="return-button" class="return-to-top">Return to top</div>
+  <div ref="return-button" class="return-to-top">
+    <router-link to="/home" class="item">Return to top</router-link>
+  </div>
 </template>
 
 <style>

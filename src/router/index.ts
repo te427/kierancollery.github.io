@@ -2,7 +2,7 @@ import { nextTick } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import LogoSection from '../sections/LogoSection.vue'
 import AboutSection from '../sections/AboutSection.vue'
-import MapSection from '../sections/MapSection.vue'
+import ExperienceSection from '../sections/ExperienceSection.vue'
 import ResearchSection from '../sections/ResearchSection.vue'
 import ContactSection from '../sections/ContactSection.vue'
 
@@ -22,10 +22,10 @@ const router = createRouter({
     {
       path: '/experience',
       name: 'Experience',
-      component: MapSection,
+      component: ExperienceSection,
     },
     {
-      path: '/reseach',
+      path: '/research',
       name: 'Research',
       component: ResearchSection,
     },
