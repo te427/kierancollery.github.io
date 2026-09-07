@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="about-text-container">
-      <p class="about-text-title">hey there!</p>
+      <p class="about-text-title">Hey there!</p>
       <p class="about-text-content">
         My name is Kieran Collery, and I am a University of Oxford DPhil candidate in Theology and
         Religion currently studying the philosophical works of Lev Shestov and his assessment and

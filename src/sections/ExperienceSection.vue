@@ -48,35 +48,51 @@ const contentMap = {
       start: 2026,
       end: null,
       location: 'Oxford, UK',
-      description: [],
+      description: [
+        "Currently undertaking a doctorate focusing on the philosophy of Lev Shestov and it's relationship to historic and modern Lutheran " +
+          'thought, supervised by Prof. Johannes Zachhuber.',
+      ],
     },
     [AcademicItems.StAndrews]: {
       title: 'MLitt Systematic and Historic Theology',
       start: 2025,
       end: 2026,
       location: 'St Andrews, UK',
-      description: [],
+      description: [
+        'Focused historical and philosophical theology, culminating in a dissertation supervised by Prof. Judith Wolfe ' +
+          "synthesising a model of the Lord's Supper in terms of the aesthetic philosophy of Hans-Georg Gadamer and the hermeneutic theology " +
+          'of Eberhard Jüngel.',
+      ],
     },
     [AcademicItems.Durham]: {
       title: 'PgDip Theology and Religion',
       start: 2024,
       end: 2025,
       location: 'Durham, UK',
-      description: [],
+      description: [
+        'Studied biblical Greek, Reformation history, philosophical theology and Scholastic theology, and wrote a ' +
+          'dissertation supervised by Dr. Marcus Pound on the relationship between Christian orthopraxy and orthodoxy ' +
+          'in light of the philosophies of Martin Buber and Søren Kierkegaard.',
+        'Graduated with distinction.',
+      ],
     },
     [AcademicItems.Picasso]: {
       title: 'Intensive Spanish B1/B2',
       start: 2024,
       end: 2024,
       location: 'Malaga, Spain',
-      description: [],
+      description: [
+        'Completed an intensive summer study program in Spanish, receiving a CEFR certification of B2.',
+      ],
     },
     [AcademicItems.Ubc]: {
       title: 'BComm Business and Computer Science',
       start: 2011,
       end: 2017,
       location: 'Vancouver, BC',
-      description: [],
+      description: [
+        'Double majored in business technology management and computer science, completing the Computer Science Co-op program.',
+      ],
     },
   },
   [MenuItems.Professional]: {
@@ -85,28 +101,47 @@ const contentMap = {
       start: 2022,
       end: 2024,
       location: 'Austin, TX',
-      description: [],
+      description: [
+        "Acted as the senior front end engineer for Google's internal vendor onboarding and payment approvals " +
+          'platform, where I rearchitected the approvals platform to use a modern tech stack and led a team in its implementation and launch.',
+        'Additionally led workshops on front end engineering principles, aided in Google hiring, mentored junior team members, ' +
+          'and was a lead in the Google Christians Austin chapter.',
+      ],
     },
     [ProfessionalItems.GoogleMtv]: {
       title: 'Software Engineer, Fuchsia',
       start: 2019,
       end: 2021,
       location: 'Mountain View, CA',
-      description: [],
+      description: [
+        'Worked as a feature lead on several Google Home Hub UI components during the port to ' +
+          "Google's open-source Fuchsia operating system, owning notifications and alerts and receiving a promotion for my work.",
+        'Regularly interviewed candidates and helped organise team retrospectives and social events.',
+      ],
     },
     [ProfessionalItems.ActivisionBlizzard]: {
       title: 'Capacity Planning Engineer, Demonware',
       start: 2016,
       end: 2019,
       location: 'Vancouver, BC',
-      description: [],
+      description: [
+        "Interned and later hired as a full time software engineer for Activision Blizzard's primary" +
+          'capacity planning team for Call of Duty and other console-focused offerings.',
+        'Later promoted to intermediate engineer for my efforts leading a project to provide data visualisation ' +
+          "tools and API's to internal teams to manage their capacity.",
+      ],
     },
     [ProfessionalItems.UbcCs]: {
       title: 'Lead Teaching Assistant, CPSC 310',
       start: 2014,
       end: 2015,
       location: 'Vancouver, BC',
-      description: [],
+      description: [
+        'Began as a teaching assistant running lab tutorials for students building full stack applications and ' +
+          'conducting office hours to clarify software engineering principles discussed in course content.',
+        'Later promoted to lead teaching assistant, where I reconstructed the lab application development tutorial ' +
+          'alongside previous duties, and was recognised with an award within the deparment.',
+      ],
     },
     [ProfessionalItems.UbcComm]: {
       title: 'Teaching Assistant, COMM 202',
@@ -114,7 +149,7 @@ const contentMap = {
       end: 2014,
       location: 'Vancouver, BC',
       description: [
-        'Created course content and ran weekly classes teaching business students business and professional skills.',
+        "Created content for presenting course material alongside fellow TA's, held office hours and ran weekly classes teaching business students business and professional skills.",
       ],
     },
   },
@@ -141,14 +176,23 @@ const content = computed(() => state.content)
 
 function toggleSection(v) {
   state.section = v
+
+  state.content =
+    contentMap[state.section][
+      state.section === MenuItems.Academic ? state.academicSection : state.professionalSection
+    ]
 }
 
 function toggleAcademicSubsection(v) {
   state.academicSection = v
+
+  state.content = contentMap[state.section][state.academicSection]
 }
 
 function toggleProfessionalSubsection(v) {
   state.professionalSection = v
+
+  state.content = contentMap[state.section][state.professionalSection]
 }
 </script>
 
@@ -182,7 +226,26 @@ function toggleProfessionalSubsection(v) {
           :selected="professionalSection"
         ></select-menu>
       </div>
-      <div class="experience-content-container">{{ content }}</div>
+      <div class="experience-content-container">
+        <div class="experience-content-header">
+          <div class="experience-content-title-date">
+            <div class="experience-content-title">{{ content.title }}</div>
+            <div class="experient-content-date">
+              {{
+                content.end
+                  ? content.start === content.end
+                    ? content.start
+                    : `${content.start} - ${content.end}`
+                  : `${content.start} - current`
+              }}
+            </div>
+          </div>
+          <div class="experience-content-location">{{ content.location }}</div>
+        </div>
+        <div class="experience-content-description">
+          <p v-for="(par, i) in content.description" :key="i">{{ par }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -204,5 +267,52 @@ function toggleProfessionalSubsection(v) {
   flex-direction: row;
   justify-content: left;
   align-items: top;
+  color: black;
+}
+
+.experience-section-container {
+  width: 10vw;
+}
+
+.experience-subsection-container {
+  width: 20vw;
+}
+
+.experience-content-container {
+  width: 30vw;
+}
+
+.experience-content-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: top;
+}
+
+.experience-content-title-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.experience-content-location {
+  margin-top: 10px;
+  font-style: italic;
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 16px;
+  color: #555555;
+  font-weight: bold;
+}
+
+.experience-content-description {
+  font-family: 'Geist', Helvetica, sans-serif;
+  color: #555555;
+  max-width: 40vw;
 }
 </style>

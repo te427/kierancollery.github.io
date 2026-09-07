@@ -63,6 +63,7 @@ function _selectItem(value) {
 .vertical {
   flex-direction: column;
   gap: 30px;
+  margin: 0;
 }
 
 .item-container {
