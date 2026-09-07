@@ -42,9 +42,6 @@ const router = createRouter({
 
       obj = { el: `#${s}` }
     }
-    if (savedPosition) {
-      obj = savedPosition
-    }
     return { ...(obj ?? { left: 0, top: 0 }), behavior: 'smooth' }
   },
 })
