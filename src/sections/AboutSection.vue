@@ -1,27 +1,25 @@
 <!-- This section should contain a self-portrait (style?) and writeup about myself -->
-<script></script>
-
 <template>
   <div class="about-container" id="about">
-    <div class="img-container">
-      <div class="img-frame">
-        <img class="img-content" src="/website_self_cropped.jpg" />
+    <div class="about-img-container">
+      <div class="about-img-frame">
+        <img class="about-img-content" src="/website_self_cropped.jpg" />
       </div>
     </div>
-    <div class="text-container">
-      <p class="text-title">Hey there!</p>
-      <p class="text-content">
+    <div class="about-text-container">
+      <p class="about-text-title">Hey there!</p>
+      <p class="about-text-content">
         My name is Kieran Collery, and I am a University of Oxford DPhil candidate in Theology and
         Religion currently studying the philosophical works of Lev Shestov and his assessment and
         critiques of modern Lutheran thought.
       </p>
-      <p class="text-content">
+      <p class="about-text-content">
         My topics of interest include the relationship between faith and reason, play, incongruous
         laughter, revelation, and otherness, all with a view to their application to Christian
         theology. My academic work has generally focused on existentialism and hermeneutics, and
         Kierkegaard and Gadamer in particular.
       </p>
-      <p class="text-content">
+      <p class="about-text-content">
         Previously, I studied theology at Durham and St. Andrews. Prior to my academic life, I
         worked as a software engineer. I am grateful to be able to call myself a Christian, and hope
         that my work may help to enrich the life of the Church catholic and those who knock upon
@@ -40,13 +38,13 @@
   background-color: #fdfdfd;
 }
 
-.img-container {
+.about-img-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.img-frame {
+.about-img-frame {
   width: 40vw;
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -54,7 +52,7 @@
 }
 
 /* Fade edges to radial gradient for frame. */
-.img-frame::after {
+.about-img-frame::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -62,17 +60,17 @@
   pointer-events: none;
 }
 
-.img-content {
+.about-img-content {
   border: solid 20px white;
 }
 
-.text-container {
+.about-text-container {
   font-family: 'Geist', Helvetica, sans-serif;
   color: #555555;
   max-width: 40vw;
 }
 
-.text-title {
+.about-text-title {
   font-family: 'Geist Pixel', sans-serif;
   font-size: 24px;
   color: black;
@@ -81,25 +79,25 @@
 
 /* Touchscreen (mobile/tablet) */
 @media (max-width: 600px) {
-  .img-frame {
+  .about-img-frame {
     width: 100vw;
   }
 
-  .img-content {
+  .about-img-content {
     max-width: 100vw;
   }
 
-  .about-container {
+  .about-about-container {
     flex-direction: column;
   }
 
-  .text-container {
+  .about-text-container {
     max-width: 85vw;
   }
 }
 
 @media (min-width: 601px) {
-  .img-content {
+  .about-img-content {
     max-width: 40vw;
   }
 }

@@ -16,7 +16,9 @@ function toggleSection(v) {
         <div class="submenu-container"></div>
         <div class="content-container"></div>
       </div>
-      <div class="map-container"></div>
+      <div class="map-container">
+        <img class="map-img-content" src="/worldmap_filled.png" />
+      </div>
     </div>
     <div class="menu-container">
       <select-menu :items="menuItems" @select="toggleSection"></select-menu>
@@ -25,11 +27,12 @@ function toggleSection(v) {
 </template>
 
 <style scoped>
-.menu-container {
+.experience-container {
   display: flexbox;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
 }
 
 .info-container {
@@ -37,5 +40,9 @@ function toggleSection(v) {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.map-img-content {
+  width: 60vw;
 }
 </style>

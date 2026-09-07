@@ -6,7 +6,7 @@ import { useTemplateRef } from 'vue'
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'
 import AboutSection from './sections/AboutSection.vue'
-import MapSection from './sections/MapSection.vue'
+import ExperienceSection from './sections/ExperienceSection.vue'
 import ResearchSection from './sections/ResearchSection.vue'
 import ContactSection from './sections/ContactSection.vue'
 

@@ -30,7 +30,7 @@ function selectItem(event) {
 </script>
 
 <template>
-  <div class="menu-container" :class="{ vertical }">
+  <div class="select-menu-container" :class="{ vertical }">
     <div class="item-container" v-for="item in items" :key="item.text" ref="items">
       <!--
           <router-link v-if="item.path" class="item">{{ item.text }}</router-link>
@@ -42,8 +42,8 @@ function selectItem(event) {
 </template>
 
 <style>
-.menu-container {
-  display: flexbox;
+.select-menu-container {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@ function selectItem(event) {
 }
 
 .vertical {
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
 }
 
