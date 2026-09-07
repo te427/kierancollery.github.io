@@ -3,10 +3,10 @@
 import SelectMenu from '../components/SelectMenu.vue'
 
 const menuItems = [
-  { text: 'About', path: '/about' },
-  { text: 'Experience', path: '/experience' },
-  { text: 'Research', path: '/research' },
-  { text: 'Contact', path: '/contact' },
+  { text: 'about', path: '/about' },
+  { text: 'experience', path: '/experience' },
+  { text: 'research', path: '/research' },
+  { text: 'contact', path: '/contact' },
 ]
 </script>
 

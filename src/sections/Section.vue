@@ -9,8 +9,6 @@ const style = {
   'background-color': `#${props.color ?? 'ffffff'}`,
   color: `#${props.color ?? 'ffffff'}`,
 }
-
-console.log(style)
 </script>
 
 <template>
