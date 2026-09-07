@@ -48,6 +48,7 @@ const contentMap = {
       start: 2026,
       end: null,
       location: 'Oxford, UK',
+      xy: { x: 40, y: 23 },
       description: [
         "Currently undertaking a doctorate focusing on the philosophy of Lev Shestov and it's relationship to historic and modern Lutheran " +
           'thought, supervised by Prof. Johannes Zachhuber.',
@@ -58,6 +59,7 @@ const contentMap = {
       start: 2025,
       end: 2026,
       location: 'St Andrews, UK',
+      xy: { x: 40, y: 19 },
       description: [
         'Focused historical and philosophical theology, culminating in a dissertation supervised by Prof. Judith Wolfe ' +
           "synthesising a model of the Lord's Supper in terms of the aesthetic philosophy of Hans-Georg Gadamer and the hermeneutic theology " +
@@ -69,8 +71,9 @@ const contentMap = {
       start: 2024,
       end: 2025,
       location: 'Durham, UK',
+      xy: { x: 40.5, y: 20 },
       description: [
-        'Studied biblical Greek, Reformation history, philosophical theology and Scholastic theology, and wrote a ' +
+        'Studied biblical Greek, church history and historic theology and philosophy, and wrote a ' +
           'dissertation supervised by Dr. Marcus Pound on the relationship between Christian orthopraxy and orthodoxy ' +
           'in light of the philosophies of Martin Buber and Søren Kierkegaard.',
         'Graduated with distinction.',
@@ -81,6 +84,7 @@ const contentMap = {
       start: 2024,
       end: 2024,
       location: 'Malaga, Spain',
+      xy: { x: 39, y: 31 },
       description: [
         'Completed an intensive summer study program in Spanish, receiving a CEFR certification of B2.',
       ],
@@ -90,6 +94,7 @@ const contentMap = {
       start: 2011,
       end: 2017,
       location: 'Vancouver, BC',
+      xy: { x: 9.5, y: 24 },
       description: [
         'Double majored in business technology management and computer science, completing the Computer Science Co-op program.',
       ],
@@ -101,8 +106,9 @@ const contentMap = {
       start: 2022,
       end: 2024,
       location: 'Austin, TX',
+      xy: { x: 16, y: 35 },
       description: [
-        "Acted as the senior front end engineer for Google's internal vendor onboarding and payment approvals " +
+        "Acted as senior front end engineer for Google's internal payment approvals " +
           'platform, where I rearchitected the approvals platform to use a modern tech stack and led a team in its implementation and launch.',
         'Additionally led workshops on front end engineering principles, aided in Google hiring, mentored junior team members, ' +
           'and was a lead in the Google Christians Austin chapter.',
@@ -113,6 +119,7 @@ const contentMap = {
       start: 2019,
       end: 2021,
       location: 'Mountain View, CA',
+      xy: { x: 10, y: 31 },
       description: [
         'Worked as a feature lead on several Google Home Hub UI components during the port to ' +
           "Google's open-source Fuchsia operating system, owning notifications and alerts and receiving a promotion for my work.",
@@ -124,6 +131,7 @@ const contentMap = {
       start: 2016,
       end: 2019,
       location: 'Vancouver, BC',
+      xy: { x: 9.5, y: 24 },
       description: [
         "Interned and later hired as a full time software engineer for Activision Blizzard's primary" +
           'capacity planning team for Call of Duty and other console-focused offerings.',
@@ -136,6 +144,7 @@ const contentMap = {
       start: 2014,
       end: 2015,
       location: 'Vancouver, BC',
+      xy: { x: 9.5, y: 24 },
       description: [
         'Began as a teaching assistant running lab tutorials for students building full stack applications and ' +
           'conducting office hours to clarify software engineering principles discussed in course content.',
@@ -148,6 +157,7 @@ const contentMap = {
       start: 2013,
       end: 2014,
       location: 'Vancouver, BC',
+      xy: { x: 9.5, y: 24 },
       description: [
         "Created content for presenting course material alongside fellow TA's, held office hours and ran weekly classes teaching business students business and professional skills.",
       ],
@@ -173,6 +183,12 @@ const isAcademic = computed(() => state.section === MenuItems.Academic)
 const academicSection = computed(() => state.academicSection)
 const professionalSection = computed(() => state.professionalSection)
 const content = computed(() => state.content)
+const markerStyle = computed(() => {
+  const { xy } = state.content
+
+  console.log(xy)
+  return { left: `${xy.x}%`, top: `${xy.y}%` }
+})
 
 function toggleSection(v) {
   state.section = v
@@ -199,7 +215,10 @@ function toggleProfessionalSubsection(v) {
 <template>
   <div class="experience-container">
     <div class="experience-map-container">
-      <img class="experience-map-img-content" src="/worldmap_filled.png" />
+      <div class="experience-map-img">
+        <img class="experience-map-img-content" src="/worldmap_filled.png" />
+        <img class="experience-map-img-marker" :style="markerStyle" src="/marker.gif" />
+      </div>
     </div>
     <div class="experience-info-container">
       <div class="experience-section-container">
@@ -258,8 +277,19 @@ function toggleProfessionalSubsection(v) {
   align-items: center;
 }
 
+.experience-map-img {
+  position: relative;
+}
+
 .experience-map-img-content {
   width: 60vw;
+}
+
+.experience-map-img-marker {
+  width: 7.5vw;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .experience-info-container {
@@ -271,15 +301,15 @@ function toggleProfessionalSubsection(v) {
 }
 
 .experience-section-container {
-  width: 10vw;
+  width: 8vw;
 }
 
 .experience-subsection-container {
-  width: 20vw;
+  width: 16vw;
 }
 
 .experience-content-container {
-  width: 30vw;
+  width: 36vw;
 }
 
 .experience-content-header {

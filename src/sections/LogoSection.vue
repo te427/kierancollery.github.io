@@ -16,7 +16,10 @@ const menuItems = [
       <img class="logo-img-content" src="/eagle.png" />
     </div>
     <div class="logo-menu-container">
-      <div class="logo-menu-title">kierancollery.com</div>
+      <div class="logo-menu-title">
+        <a class="logo-menu-title-prefix">kieran</a>
+        <a class="logo-menu-title-suffix">collery</a>
+      </div>
       <div class="logo-menu-content">
         <select-menu :items="menuItems"></select-menu>
       </div>
@@ -78,5 +81,13 @@ const menuItems = [
 
 .logo-spacer {
   height: 30px;
+}
+
+.logo-menu-title-prefix {
+  color: #cecece;
+}
+
+.logo-menu-title-suffix {
+  color: #333333;
 }
 </style>
