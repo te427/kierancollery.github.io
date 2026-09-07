@@ -78,7 +78,7 @@ document.body.onscroll = (_) => {
   </div>
 
   <div ref="return-button" class="return-to-top">
-    <router-link to="#home" class="item">Return to top</router-link>
+    <router-link to="/" class="item">Return to top</router-link>
   </div>
 </template>
 

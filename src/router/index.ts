@@ -52,16 +52,13 @@ const router = createRouter({
 router.afterEach((to, _) => {
   const s = to.hash || to.path.split('/')[1]
 
-  if (s) {
-    // Wait for DOM update before scrolling
-    nextTick(() => {
-      const el = document.querySelector(s.includes('#') ? s : `#${s}`)
-
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
-    })
-  }
+  const el = document.querySelector(s ? (s.includes('#') ? s : `#${s}`) : '#home')
+  // Wait for DOM update before scrolling
+  nextTick(() => {
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  })
 })
 
 export default router
