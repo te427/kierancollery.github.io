@@ -12,7 +12,6 @@ const menuItems = [
 
 <template>
   <div class="logo-container" id="logo">
-    <div class="logo-spacer"></div>
     <div class="logo-img-container">
       <img class="logo-img-content" src="/eagle.png" />
     </div>

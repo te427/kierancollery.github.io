@@ -7,6 +7,7 @@ const props = defineProps<{
 
 const style = {
   'background-color': `#${props.color ?? 'ffffff'}`,
+  color: `#${props.color ?? 'ffffff'}`,
 }
 
 console.log(style)
@@ -14,16 +15,25 @@ console.log(style)
 
 <template>
   <div class="section" :style="style" :id="anchor">
-    <slot />
+    <div class="section-animation">
+      <slot />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .section {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.section-animation {
+  /* Fade in animation */
+  animation: fadeIn 100ms linear both;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 100%;
 }
 </style>

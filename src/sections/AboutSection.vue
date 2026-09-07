@@ -41,6 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: inherit;
 }
 
 .about-img-frame {
@@ -48,6 +49,7 @@
   aspect-ratio: 1/1;
   overflow: hidden;
   position: relative;
+  background-color: inherit;
 }
 
 /* Fade edges to radial gradient for frame. */
@@ -55,8 +57,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 55%, #fdfdfd 60%);
+  background: radial-gradient(circle at center, transparent 55%, currentColor 60%);
   pointer-events: none;
+  color: inherit;
 }
 
 .about-img-content {

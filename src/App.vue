@@ -35,7 +35,7 @@ const sectionAnchors = [
 
 const createSections = (components) =>
   components.map(({ anchor, component }, id) => {
-    const v = (0xff - 0x04 * id).toString(16)
+    const v = (0xff - 0x08 * id).toString(16)
     const color = `${v}${v}${v}`
 
     return { id, component, color, anchor }
