@@ -12,7 +12,7 @@ import ContactSection from './sections/ContactSection.vue'
 // Keep in same order as
 const sectionAnchors = [
   {
-    anchor: 'home',
+    anchor: '',
     component: LogoSection,
   },
   {
@@ -50,13 +50,13 @@ const showingClass = 'return-showing'
 const hidingClass = 'return-hiding'
 
 document.body.onscroll = (_) => {
-  if (!window.scrollY) {
+  if (window.scrollY < 30 && !returnHidden) {
     // hide return button
     returnHidden = true
     returnButton.value.classList.remove(showingClass)
     returnButton.value.classList.add(hidingClass)
   }
-  if (window.scrollY && returnHidden) {
+  if (window.scrollY >= 30 && returnHidden) {
     // show return button
     returnHidden = false
     returnButton.value.classList.remove(hidingClass)
@@ -66,7 +66,7 @@ document.body.onscroll = (_) => {
 </script>
 
 <template>
-  <div class="scroll-container">
+  <div class="scroll-container" id="home">
     <Section
       v-for="({ component, id, color, anchor }, _) in components"
       :key="id"
@@ -78,7 +78,7 @@ document.body.onscroll = (_) => {
   </div>
 
   <div ref="return-button" class="return-to-top">
-    <router-link to="/home" class="item">Return to top</router-link>
+    <router-link to="#home" class="item">Return to top</router-link>
   </div>
 </template>
 

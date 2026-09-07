@@ -36,6 +36,9 @@ const menuItems = [
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  animation: fade-in 1s linear both;
+  animation-delay: 300ms;
 }
 
 .logo-img-content {
@@ -45,6 +48,20 @@ const menuItems = [
 .logo-menu-container {
   display: flex;
   flex-direction: column;
+
+  opacity: 0;
+  animation: fade-in 1s linear both;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .logo-menu-title {
