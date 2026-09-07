@@ -6,8 +6,10 @@ const props = defineProps<{
 }>()
 
 const style = {
-  backgroundColor: props.color ?? 'white',
+  'background-color': `#${props.color ?? 'ffffff'}`,
 }
+
+console.log(style)
 </script>
 
 <template>
