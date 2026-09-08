@@ -44,7 +44,7 @@ const conferences = [
         </div>
       </div>
       <div class="research-conference-container">
-        <div class="research-title">Conferences</div>
+        <div class="research-title">Conference papers</div>
         <div v-for="c in conferences" :key="c.title" class="research-conference-content">
           <div class="research-title-date-container">
             <div class="research-title-date">
