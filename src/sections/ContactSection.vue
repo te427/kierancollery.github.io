@@ -21,36 +21,44 @@ function setInfo(event) {
     <div class="contact-title">Find me on {{ state.info }}</div>
     <div class="contact-links">
       <div class="contact-link-substack">
-        <img
-          src="/substack-logo.png"
-          class="contact-link-logo"
-          @mouseenter="setInfo(Event.Substack)"
-          @mouseleave="setInfo(Event.None)"
-        />
+        <a href="https://burymeintexas.substack.com" target="_blank">
+          <img
+            src="/substack-logo.png"
+            class="contact-link-logo"
+            @mouseenter="setInfo(Event.Substack)"
+            @mouseleave="setInfo(Event.None)"
+          />
+        </a>
       </div>
       <div class="contact-link-linkedin">
-        <img
-          src="/linkedin-logo.png"
-          class="contact-link-logo"
-          @mouseenter="setInfo(Event.LinkedIn)"
-          @mouseleave="setInfo(Event.None)"
-        />
+        <a href="https://linkedin.com" target="_blank">
+          <img
+            src="/linkedin-logo.png"
+            class="contact-link-logo"
+            @mouseenter="setInfo(Event.LinkedIn)"
+            @mouseleave="setInfo(Event.None)"
+          />
+        </a>
       </div>
       <div class="contact-link-academic">
-        <img
-          src="/academic-logo.png"
-          class="contact-link-logo"
-          @mouseenter="setInfo(Event.Academic)"
-          @mouseleave="setInfo(Event.None)"
-        />
+        <a href="https://www.theology.ox.ac.uk/dphil-students" target="_blank">
+          <img
+            src="/academic-logo.png"
+            class="contact-link-logo"
+            @mouseenter="setInfo(Event.Academic)"
+            @mouseleave="setInfo(Event.None)"
+          />
+        </a>
       </div>
       <div class="contact-link-email">
-        <img
-          src="/mail-logo.png"
-          class="contact-link-logo"
-          @mouseenter="setInfo(Event.Mail)"
-          @mouseleave="setInfo(Event.None)"
-        />
+        <a href="mailto:kieran.collery@gmail.com" target="_blank">
+          <img
+            src="/mail-logo.png"
+            class="contact-link-logo"
+            @mouseenter="setInfo(Event.Mail)"
+            @mouseleave="setInfo(Event.None)"
+          />
+        </a>
       </div>
     </div>
     <div class="contact-disclaimer">
