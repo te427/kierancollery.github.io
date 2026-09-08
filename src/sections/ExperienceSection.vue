@@ -1,6 +1,6 @@
 <!-- This section should contain an interactive map with places I've been -->
 <script setup lang="ts">
-import { reactive, computed } from 'vue'
+import { reactive, computed, useTemplateRef } from 'vue'
 import SelectMenu from '../components/SelectMenu.vue'
 
 enum MenuItems {
@@ -186,7 +186,6 @@ const content = computed(() => state.content)
 const markerStyle = computed(() => {
   const { xy } = state.content
 
-  console.log(xy)
   return { left: `${xy.x}%`, top: `${xy.y}%` }
 })
 
@@ -197,18 +196,41 @@ function toggleSection(v) {
     contentMap[state.section][
       state.section === MenuItems.Academic ? state.academicSection : state.professionalSection
     ]
+
+  animateSubsec()
+  animateDesc(true)
 }
 
 function toggleAcademicSubsection(v) {
   state.academicSection = v
 
   state.content = contentMap[state.section][state.academicSection]
+
+  animateDesc()
 }
 
 function toggleProfessionalSubsection(v) {
   state.professionalSection = v
 
   state.content = contentMap[state.section][state.professionalSection]
+
+  animateDesc()
+}
+
+const descRef = useTemplateRef('desc')
+const subsecRef = useTemplateRef('subsec')
+
+function animateDesc(delay = false) {
+  descRef.value.classList.remove('desc-animate')
+  descRef.value.classList.remove('desc-animate-delay')
+  void descRef.value.offsetWidth
+  descRef.value.classList.add(delay ? 'desc-animate-delay' : 'desc-animate')
+}
+
+function animateSubsec() {
+  subsecRef.value.classList.remove('subsec-animate')
+  void subsecRef.value.offsetWidth
+  subsecRef.value.classList.add('subsec-animate')
 }
 </script>
 
@@ -229,7 +251,7 @@ function toggleProfessionalSubsection(v) {
           :selected="defaultSection"
         ></select-menu>
       </div>
-      <div class="experience-subsection-container">
+      <div class="experience-subsection-container" ref="subsec">
         <select-menu
           v-if="isAcademic"
           :items="academicItems"
@@ -245,7 +267,7 @@ function toggleProfessionalSubsection(v) {
           :selected="professionalSection"
         ></select-menu>
       </div>
-      <div class="experience-content-container">
+      <div class="experience-content-container" ref="desc">
         <div class="experience-content-header">
           <div class="experience-content-title-date">
             <div class="experience-content-title">{{ content.title }}</div>
@@ -310,6 +332,7 @@ function toggleProfessionalSubsection(v) {
 
 .experience-content-container {
   width: 36vw;
+  padding-left: 10px;
 }
 
 .experience-content-header {
@@ -344,5 +367,29 @@ function toggleProfessionalSubsection(v) {
   font-family: 'Geist', Helvetica, sans-serif;
   color: #555555;
   max-width: 40vw;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.subsec-animate {
+  animation: fadeInLeft 500ms linear both;
+}
+
+.desc-animate {
+  animation: fadeInLeft 500ms linear both;
+}
+
+.desc-animate-delay {
+  animation: fadeInLeft 500ms linear both;
+  animation-delay: 200ms;
 }
 </style>
