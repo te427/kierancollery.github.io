@@ -84,7 +84,7 @@ const menuItems = [
 }
 
 .logo-menu-title-prefix {
-  color: #cecece;
+  color: #bdbdbd;
 }
 
 .logo-menu-title-suffix {

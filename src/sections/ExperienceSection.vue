@@ -242,6 +242,7 @@ function animateSubsec() {
         <img class="experience-map-img-marker" :style="markerStyle" src="/marker.gif" />
       </div>
     </div>
+    <div class="experience-title-container">What I've been up to...</div>
     <div class="experience-info-container">
       <div class="experience-section-container">
         <select-menu
@@ -320,6 +321,14 @@ function animateSubsec() {
   justify-content: left;
   align-items: top;
   color: black;
+}
+
+.experience-title-container {
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 24px;
+  color: #555555;
+  font-weight: bold;
+  margin-bottom: 24px;
 }
 
 .experience-section-container {

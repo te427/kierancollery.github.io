@@ -12,15 +12,34 @@ const style = {
 </script>
 
 <template>
-  <div class="section" :style="style" :id="anchor">
-    <div class="section-animation">
-      <slot />
+  <div class="section">
+    <!-- <div class="section-title">{{ anchor }}</div> -->
+    <div class="section-content" :style="style" :id="anchor">
+      <div class="section-animation">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .section {
+  position: relative;
+}
+
+.section-title {
+  position: absolute;
+  top: 0;
+  left: 108px;
+  transform-origin: top left;
+  rotate: 90deg;
+  font-family: 'Geist', sans-serif;
+  font-size: 96px;
+  color: white;
+  font-weight: 600;
+}
+
+.section-content {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

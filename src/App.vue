@@ -35,7 +35,7 @@ const sectionAnchors = [
 
 const createSections = (components) =>
   components.map(({ anchor, component }, id) => {
-    const v = (0xff - 0x08 * id).toString(16)
+    const v = (0xff - 0x0d * id).toString(16)
     const color = `${v}${v}${v}`
 
     return { id, component, color, anchor }
@@ -83,6 +83,10 @@ document.body.onscroll = (_) => {
 </template>
 
 <style>
+body {
+  margin: 0;
+}
+
 .return-to-top {
   position: fixed;
   right: 40px;
