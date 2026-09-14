@@ -51,7 +51,7 @@ function setInfo(event) {
         </a>
       </div>
       <div class="contact-link-email">
-        <a href="mailto:kieran.collery@gmail.com" target="_blank">
+        <a href="mailto:kieran.collery@gmail.com">
           <img
             src="/mail-logo.png"
             class="contact-link-logo"
@@ -62,9 +62,7 @@ function setInfo(event) {
       </div>
     </div>
     <div class="contact-disclaimer">
-      <p class="contact-disclaimer-content">
-        All design, animation and code by me, without the use of AI.
-      </p>
+      <p class="contact-disclaimer-content">All design, animation and code by me, not AI.</p>
       <p class="contact-disclaimer-content">
         © {{ new Date().getFullYear() }} Kieran Collery. All rights reserved.
       </p>
