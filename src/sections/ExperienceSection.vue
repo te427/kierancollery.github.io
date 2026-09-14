@@ -24,16 +24,21 @@ enum ProfessionalItems {
   UbcComm = 'ubc faculty of commerce',
 }
 
+type CVItems = AcademicItems | ProfessionalItems
+type CVText = {
+  text: CVItems
+}
+
 const menuItems = [{ text: MenuItems.Academic }, { text: MenuItems.Professional }]
 
-const academicItems = [
+const academicItems: CVText[] = [
   { text: AcademicItems.Oxford },
   { text: AcademicItems.StAndrews },
   { text: AcademicItems.Durham },
   { text: AcademicItems.Picasso },
   { text: AcademicItems.Ubc },
 ]
-const professionalItems = [
+const professionalItems: CVText[] = [
   { text: ProfessionalItems.GoogleAustin },
   { text: ProfessionalItems.GoogleMtv },
   { text: ProfessionalItems.ActivisionBlizzard },
@@ -41,7 +46,21 @@ const professionalItems = [
   { text: ProfessionalItems.UbcComm },
 ]
 
-const contentMap = {
+type CVItem = {
+  title: string
+  start: number
+  end: number | null
+  location: string
+  xy: {
+    x: number
+    y: number
+  }
+  description: string[]
+}
+
+type Content = Partial<Record<MenuItems, Partial<Record<CVItems, CVItem>>>>
+
+const contentMap: Content = {
   [MenuItems.Academic]: {
     [AcademicItems.Oxford]: {
       title: 'DPhil Theology and Religion',
@@ -165,16 +184,16 @@ const contentMap = {
   },
 }
 
-const defaultSection = menuItems[0].text
-const defaultAcademicSection = academicItems[0].text
-const defaultProfessionalSection = professionalItems[0].text
+const defaultSection = menuItems[0]!.text
+const defaultAcademicSection = academicItems[0]!.text
+const defaultProfessionalSection = professionalItems[0]!.text
 
 const state = reactive({
   section: defaultSection,
   academicSection: defaultAcademicSection,
   professionalSection: defaultProfessionalSection,
   content:
-    contentMap[defaultSection][
+    contentMap[defaultSection]![
       defaultSection === MenuItems.Academic ? defaultAcademicSection : defaultProfessionalSection
     ],
 })
@@ -184,16 +203,16 @@ const academicSection = computed(() => state.academicSection)
 const professionalSection = computed(() => state.professionalSection)
 const content = computed(() => state.content)
 const markerStyle = computed(() => {
-  const { xy } = state.content
+  const { xy } = state.content!
 
   return { left: `${xy.x}%`, top: `${xy.y}%` }
 })
 
-function toggleSection(v) {
-  state.section = v
+function toggleSection(v: unknown) {
+  state.section = v as MenuItems
 
   state.content =
-    contentMap[state.section][
+    contentMap[state.section]![
       state.section === MenuItems.Academic ? state.academicSection : state.professionalSection
     ]
 
@@ -201,18 +220,18 @@ function toggleSection(v) {
   animateDesc(true)
 }
 
-function toggleAcademicSubsection(v) {
-  state.academicSection = v
+function toggleAcademicSubsection(v: unknown) {
+  state.academicSection = v as AcademicItems
 
-  state.content = contentMap[state.section][state.academicSection]
+  state.content = contentMap[state.section]![state.academicSection]
 
   animateDesc()
 }
 
-function toggleProfessionalSubsection(v) {
-  state.professionalSection = v
+function toggleProfessionalSubsection(v: unknown) {
+  state.professionalSection = v as ProfessionalItems
 
-  state.content = contentMap[state.section][state.professionalSection]
+  state.content = contentMap[state.section]![state.professionalSection]
 
   animateDesc()
 }
@@ -221,16 +240,16 @@ const descRef = useTemplateRef('desc')
 const subsecRef = useTemplateRef('subsec')
 
 function animateDesc(delay = false) {
-  descRef.value.classList.remove('desc-animate')
-  descRef.value.classList.remove('desc-animate-delay')
-  void descRef.value.offsetWidth
-  descRef.value.classList.add(delay ? 'desc-animate-delay' : 'desc-animate')
+  descRef!.value!.classList!.remove('desc-animate')
+  descRef!.value!.classList!.remove('desc-animate-delay')
+  void descRef!.value!.offsetWidth
+  descRef!.value!.classList!.add(delay ? 'desc-animate-delay' : 'desc-animate')
 }
 
 function animateSubsec() {
-  subsecRef.value.classList.remove('subsec-animate')
-  void subsecRef.value.offsetWidth
-  subsecRef.value.classList.add('subsec-animate')
+  subsecRef!.value!.classList!.remove('subsec-animate')
+  void subsecRef!.value!.offsetWidth
+  subsecRef!.value!.classList!.add('subsec-animate')
 }
 </script>
 
@@ -271,21 +290,21 @@ function animateSubsec() {
       <div class="experience-content-container" ref="desc">
         <div class="experience-content-header">
           <div class="experience-content-title-date">
-            <div class="experience-content-title">{{ content.title }}</div>
+            <div class="experience-content-title">{{ content!.title }}</div>
             <div class="experient-content-date">
               {{
-                content.end
-                  ? content.start === content.end
-                    ? content.start
-                    : `${content.start} - ${content.end}`
-                  : `${content.start} - current`
+                content!.end
+                  ? content!.start === content!.end
+                    ? content!.start
+                    : `${content!.start} - ${content!.end}`
+                  : `${content!.start} - current`
               }}
             </div>
           </div>
-          <div class="experience-content-location">{{ content.location }}</div>
+          <div class="experience-content-location">{{ content!.location }}</div>
         </div>
         <div class="experience-content-description">
-          <p v-for="(par, i) in content.description" :key="i">{{ par }}</p>
+          <p v-for="(par, i) in content!.description" :key="i">{{ par }}</p>
         </div>
       </div>
     </div>

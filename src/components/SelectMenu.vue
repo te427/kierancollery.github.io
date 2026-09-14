@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { useTemplateRef, onMounted } from 'vue'
+
+type Item = {
+  text: string
+  path?: string
+}
+
 const props = defineProps<{
   vertical?: boolean
   selected?: string
-  items: [
-    {
-      text: string
-      path?: string
-    },
-  ]
+  items: Item[]
 }>()
 
-const emit = defineEmits<{ (e: 'select', value: string): void }>()
+const emit = defineEmits<{ (e: 'select', value: unknown): void }>()
 
 const itemRefs = useTemplateRef('items')
 
@@ -22,16 +23,16 @@ onMounted(() => {
   }
 })
 
-function selectItem(event) {
-  const value = event.target.textContent
+function selectItem(event: Event) {
+  const value = (event!.target! as HTMLElement).textContent
 
   emit('select', value)
 
   _selectItem(value)
 }
 
-function _selectItem(value) {
-  for (const el of itemRefs.value.values()) {
+function _selectItem(value: string) {
+  for (const el of itemRefs!.value!.values()) {
     if (el.textContent === value) {
       el.classList.add('selected')
     } else {

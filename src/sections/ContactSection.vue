@@ -1,7 +1,7 @@
 <!-- This section should contain links to my academic page, LinkedIn, Substack and email -->
 <script setup lang="ts">
 import { reactive } from 'vue'
-enum Event {
+enum Link {
   None = '',
   Substack = 'substack',
   LinkedIn = 'linkedin',
@@ -9,10 +9,10 @@ enum Event {
   Mail = 'my email',
 }
 
-const state = reactive({ info: Event.None })
+const state = reactive({ info: Link.None })
 
-function setInfo(event) {
-  state.info = event
+function setInfo(link: Link) {
+  state.info = link
 }
 </script>
 
@@ -25,8 +25,8 @@ function setInfo(event) {
           <img
             src="/substack-logo.png"
             class="contact-link-logo"
-            @mouseenter="setInfo(Event.Substack)"
-            @mouseleave="setInfo(Event.None)"
+            @mouseenter="setInfo(Link.Substack)"
+            @mouseleave="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -35,8 +35,8 @@ function setInfo(event) {
           <img
             src="/linkedin-logo.png"
             class="contact-link-logo"
-            @mouseenter="setInfo(Event.LinkedIn)"
-            @mouseleave="setInfo(Event.None)"
+            @mouseenter="setInfo(Link.LinkedIn)"
+            @mouseleave="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -45,8 +45,8 @@ function setInfo(event) {
           <img
             src="/academic-logo.png"
             class="contact-link-logo"
-            @mouseenter="setInfo(Event.Academic)"
-            @mouseleave="setInfo(Event.None)"
+            @mouseenter="setInfo(Link.Academic)"
+            @mouseleave="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -55,8 +55,8 @@ function setInfo(event) {
           <img
             src="/mail-logo.png"
             class="contact-link-logo"
-            @mouseenter="setInfo(Event.Mail)"
-            @mouseleave="setInfo(Event.None)"
+            @mouseenter="setInfo(Link.Mail)"
+            @mouseleave="setInfo(Link.None)"
           />
         </a>
       </div>

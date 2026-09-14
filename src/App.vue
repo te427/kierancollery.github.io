@@ -1,6 +1,7 @@
 <!-- This section should provide a "Return to top" button and disclaimers -->
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
+import type { Component } from 'vue'
 
 import Section from './sections/Section.vue'
 import LogoSection from './sections/LogoSection.vue'
@@ -9,8 +10,13 @@ import ExperienceSection from './sections/ExperienceSection.vue'
 import ResearchSection from './sections/ResearchSection.vue'
 import ContactSection from './sections/ContactSection.vue'
 
+type Anchor = {
+  anchor: string
+  component: Component
+}
+
 // Keep in same order as
-const sectionAnchors = [
+const sectionAnchors: Anchor[] = [
   {
     anchor: '',
     component: LogoSection,
@@ -33,8 +39,8 @@ const sectionAnchors = [
   },
 ]
 
-const createSections = (components) =>
-  components.map(({ anchor, component }, id) => {
+const createSections = (components: Anchor[]) =>
+  components.map(({ anchor, component }, id: number) => {
     const v = (0xff - 0x0d * id).toString(16)
     const color = `${v}${v}${v}`
 
@@ -53,14 +59,14 @@ document.body.onscroll = (_) => {
   if (window.scrollY < 30 && !returnHidden) {
     // hide return button
     returnHidden = true
-    returnButton.value.classList.remove(showingClass)
-    returnButton.value.classList.add(hidingClass)
+    returnButton!.value!.classList!.remove(showingClass)
+    returnButton!.value!.classList!.add(hidingClass)
   }
   if (window.scrollY >= 30 && returnHidden) {
     // show return button
     returnHidden = false
-    returnButton.value.classList.remove(hidingClass)
-    returnButton.value.classList.add(showingClass)
+    returnButton!.value!.classList!.remove(hidingClass)
+    returnButton!.value!.classList!.add(showingClass)
   }
 }
 </script>
