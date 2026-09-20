@@ -83,6 +83,7 @@ const contentMap: Content = {
         'Focused historical and philosophical theology, culminating in a dissertation supervised by Prof. Judith Wolfe ' +
           "synthesising a model of the Lord's Supper in terms of the aesthetic philosophy of Hans-Georg Gadamer and the hermeneutic theology " +
           'of Eberhard Jüngel.',
+        'Graduated with distinction.',
       ],
     },
     [AcademicItems.Durham]: {
