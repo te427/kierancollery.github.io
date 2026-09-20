@@ -27,6 +27,8 @@ function setInfo(link: Link) {
             class="contact-link-logo"
             @mouseenter="setInfo(Link.Substack)"
             @mouseleave="setInfo(Link.None)"
+            @touchstart="setInfo(Link.Substack)"
+            @touchend="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -37,6 +39,8 @@ function setInfo(link: Link) {
             class="contact-link-logo"
             @mouseenter="setInfo(Link.LinkedIn)"
             @mouseleave="setInfo(Link.None)"
+            @touchstart="setInfo(Link.LinkedIn)"
+            @touchend="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -47,6 +51,8 @@ function setInfo(link: Link) {
             class="contact-link-logo"
             @mouseenter="setInfo(Link.Academic)"
             @mouseleave="setInfo(Link.None)"
+            @touchstart="setInfo(Link.Academic)"
+            @touchend="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -57,6 +63,8 @@ function setInfo(link: Link) {
             class="contact-link-logo"
             @mouseenter="setInfo(Link.Mail)"
             @mouseleave="setInfo(Link.None)"
+            @touchstart="setInfo(Link.Mail)"
+            @touchend="setInfo(Link.None)"
           />
         </a>
       </div>
@@ -120,5 +128,15 @@ function setInfo(link: Link) {
   color: #999999;
   font-style: italic;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 20px;
+  }
+
+  .contact-link-logo {
+    width: 15vw;
+  }
 }
 </style>

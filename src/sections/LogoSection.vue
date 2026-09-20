@@ -90,4 +90,10 @@ const menuItems = [
 .logo-menu-title-suffix {
   color: #333333;
 }
+
+@media (max-width: 600px) {
+  .logo-img-content {
+    width: 100vw;
+  }
+}
 </style>

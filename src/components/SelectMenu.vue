@@ -8,6 +8,7 @@ type Item = {
 
 const props = defineProps<{
   vertical?: boolean
+  leftAlign?: boolean
   selected?: string
   items: Item[]
 }>()
@@ -43,7 +44,7 @@ function _selectItem(value: string) {
 </script>
 
 <template>
-  <div class="select-menu-container" :class="{ vertical }">
+  <div class="select-menu-container" :class="{ vertical, leftAlign }">
     <div class="item-container" v-for="item in items" :key="item.text" ref="items">
       <router-link v-if="item.path" :to="item.path" class="item">{{ item.text }}</router-link>
       <a v-else class="item" @click="selectItem">{{ item.text }} </a>
@@ -81,6 +82,7 @@ function _selectItem(value: string) {
   transition: background-size 0.5s;
   cursor: pointer;
   color: black;
+  font-size: 18px;
 }
 
 .selected {
@@ -91,5 +93,29 @@ function _selectItem(value: string) {
 .item:hover {
   --underline-width: 100%;
   color: #666666;
+}
+
+@media (max-width: 600px) {
+  .select-menu-container {
+    gap: 0;
+    margin-bottom: 8px;
+  }
+
+  .vertical {
+    /* Ignore vertical menu. */
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .item {
+    font-size: 14px;
+  }
+
+  .leftAlign {
+    justify-content: left;
+    .item {
+      padding: 0;
+    }
+  }
 }
 </style>

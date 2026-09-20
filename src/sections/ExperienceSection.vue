@@ -9,19 +9,19 @@ enum MenuItems {
 }
 
 enum AcademicItems {
-  Oxford = 'university of oxford',
-  StAndrews = 'university of st andrews',
-  Durham = 'durham university',
-  Picasso = 'instututo picasso',
-  Ubc = 'university of british columbia',
+  Oxford = 'oxford',
+  StAndrews = 'st andrews',
+  Durham = 'durham',
+  Picasso = 'picasso',
+  Ubc = 'ubc',
 }
 
 enum ProfessionalItems {
-  GoogleAustin = 'google austin',
-  GoogleMtv = 'google mountain view',
+  GoogleAustin = 'google atx',
+  GoogleMtv = 'google mtv',
   ActivisionBlizzard = 'activision blizzard',
-  UbcCs = 'ubc faculty of computer science',
-  UbcComm = 'ubc faculty of commerce',
+  UbcCs = 'ubc cs',
+  UbcComm = 'ubc commerce',
 }
 
 type CVItems = AcademicItems | ProfessionalItems
@@ -268,6 +268,7 @@ function animateSubsec() {
           :items="menuItems"
           @select="toggleSection"
           :vertical="true"
+          :leftAlign="true"
           :selected="defaultSection"
         ></select-menu>
       </div>
@@ -277,6 +278,7 @@ function animateSubsec() {
           :items="academicItems"
           @select="toggleAcademicSubsection"
           :vertical="true"
+          :leftAlign="true"
           :selected="academicSection"
         ></select-menu>
         <select-menu
@@ -284,14 +286,16 @@ function animateSubsec() {
           :items="professionalItems"
           @select="toggleProfessionalSubsection"
           :vertical="true"
+          :leftAlign="true"
           :selected="professionalSection"
         ></select-menu>
       </div>
       <div class="experience-content-container" ref="desc">
         <div class="experience-content-header">
+          <div class="experience-content-title">{{ content!.title }}</div>
           <div class="experience-content-title-date">
-            <div class="experience-content-title">{{ content!.title }}</div>
-            <div class="experient-content-date">
+            <div class="experience-content-location">{{ content!.location }}</div>
+            <div class="experience-content-date">
               {{
                 content!.end
                   ? content!.start === content!.end
@@ -301,7 +305,6 @@ function animateSubsec() {
               }}
             </div>
           </div>
-          <div class="experience-content-location">{{ content!.location }}</div>
         </div>
         <div class="experience-content-description">
           <p v-for="(par, i) in content!.description" :key="i">{{ par }}</p>
@@ -313,7 +316,7 @@ function animateSubsec() {
 
 <style scoped>
 .experience-container {
-  display: flexbox;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -348,6 +351,7 @@ function animateSubsec() {
   color: #555555;
   font-weight: bold;
   margin-bottom: 24px;
+  width: 60vw;
 }
 
 .experience-section-container {
@@ -379,6 +383,21 @@ function animateSubsec() {
   font-family: 'Geist Pixel', sans-serif;
   font-size: 18px;
   color: black;
+  font-weight: bold;
+}
+
+.experience-content-title {
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.experience-content-date {
+  margin-top: 10px;
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 16px;
+  color: #555555;
   font-weight: bold;
 }
 
@@ -419,5 +438,61 @@ function animateSubsec() {
 .desc-animate-delay {
   animation: fadeInLeft 500ms linear both;
   animation-delay: 200ms;
+}
+
+@media (max-width: 600px) {
+  .experience-map-img-content {
+    width: 100vw;
+    margin-bottom: 8px;
+  }
+
+  .experience-map-img-marker {
+    width: 12.5vw;
+  }
+
+  .experience-title-container {
+    width: 85vw;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  .experience-info-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .experience-section-container {
+    width: 85vw;
+  }
+
+  .experience-subsection-container {
+    width: 85vw;
+    margin-bottom: 8px;
+  }
+
+  .experience-content-container {
+    width: 85vw;
+    padding-left: 0;
+  }
+
+  .experience-content-title {
+    font-size: 14px;
+  }
+
+  .experience-content-date {
+    font-size: 12px;
+    width: 25vw;
+    margin: 0;
+  }
+
+  .experience-content-location {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .experience-content-description {
+    font-size: 12px;
+    max-width: 85vw;
+    width: 85vw;
+  }
 }
 </style>

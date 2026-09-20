@@ -81,6 +81,10 @@
 
 /* Touchscreen (mobile/tablet) */
 @media (max-width: 600px) {
+  .about-container {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
   .about-img-frame {
     width: 100vw;
   }
@@ -95,6 +99,15 @@
 
   .about-text-container {
     max-width: 85vw;
+  }
+
+  .about-text-title {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .about-text-container {
+    font-size: 12px;
   }
 }
 

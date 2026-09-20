@@ -69,8 +69,7 @@ const conferences = [
 .research-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: left;
+  justify-content: left;
 }
 
 .research-container-title {
@@ -139,5 +138,19 @@ const conferences = [
   font-size: 12px;
   color: #555555;
   font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .research-container {
+    justify-content: center;
+    align-items: center;
+  }
+  .research-container-title {
+    width: 85vw;
+  }
+  .research-container-content {
+    flex-direction: column;
+    width: 85vw;
+  }
 }
 </style>
