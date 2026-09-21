@@ -33,7 +33,7 @@ function setInfo(link: Link) {
         </a>
       </div>
       <div class="contact-link-linkedin">
-        <a href="https://linkedin.com" target="_blank">
+        <a href="https://linkedin.com/in/kcollery" target="_blank">
           <img
             src="/linkedin-logo.png"
             class="contact-link-logo"
